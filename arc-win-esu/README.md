@@ -25,9 +25,9 @@ You can get access to ESUs through the following options:
 **Important Note** - Software Assurance (SA) is required before you can enable ESU. During the ESU enablement process you will need to attest to having SA.
 
 ### Additional resources:
-[Lifecycle FAQ - Extended Security Updates](https://learn.microsoft.com/en-us/lifecycle/faq/extended-security-updates)
-
 [How to get Extended Security Updates (ESU) for Windows Server](https://learn.microsoft.com/en-us/windows-server/get-started/extended-security-updates-deploy)
+
+[Lifecycle FAQ - Extended Security Updates](https://learn.microsoft.com/en-us/lifecycle/faq/extended-security-updates)
 
 ## Why enable ESU with Azure Arc?
 
@@ -89,11 +89,11 @@ Update the following columns to determine your required cores (server, host, or 
 
 
 ### Additional resources:
-[License provisioning guidelines for Extended Security Updates for Windows Server 2012](https://learn.microsoft.com/en-us/azure/azure-arc/servers/license-extended-security-updates)
+[Dev/Test scenarios](https://learn.microsoft.com/en-us/azure/azure-arc/servers/deliver-extended-security-updates#additional-scenarios)
 
 [Extended Security Updates enabled by Azure Arc Pricing](https://azure.microsoft.com/en-us/pricing/details/azure-arc/core-control-plane/)
 
-[Dev/Test scenarios](https://learn.microsoft.com/en-us/azure/azure-arc/servers/deliver-extended-security-updates#additional-scenarios)
+[License provisioning guidelines for Extended Security Updates for Windows Server 2012](https://learn.microsoft.com/en-us/azure/azure-arc/servers/license-extended-security-updates)
 
 ## Deploy Azure Arc and configure Arc ESU licenses
 I'm not going to re-hash deployment as there are many options and it's dependent on your environment. It's well documented in the docs below.Here are the high-level next steps to deploy Azure Arc and configure Arc ESU:
@@ -113,12 +113,13 @@ How do I structure my vcore ESU licenses? Great question. There are two schools 
 
 ### Additional Resources
 [Arc agent deployment options](https://learn.microsoft.com/en-us/azure/azure-arc/servers/deployment-options)
-[ESU server pre-reqs](https://support.microsoft.com/en-us/topic/kb5031043-procedure-to-continue-receiving-security-updates-after-extended-support-has-ended-on-october-10-2023-c1a20132-e34c-402d-96ca-1e785ed51d45)
-
-[Prepare to deliver ESU](https://learn.microsoft.com/en-us/azure/azure-arc/servers/prepare-extended-security-updates?tabs=azure-cloud)
 
 [Deliver ESU - License management](https://learn.microsoft.com/en-us/azure/azure-arc/servers/deliver-extended-security-updates)
 
-[Programmatically manage ESU licenses via API](https://learn.microsoft.com/en-us/azure/azure-arc/servers/api-extended-security-updates)
+[ESU server pre-reqs](https://support.microsoft.com/en-us/topic/kb5031043-procedure-to-continue-receiving-security-updates-after-extended-support-has-ended-on-october-10-2023-c1a20132-e34c-402d-96ca-1e785ed51d45)
 
 [PowerShell scripts for ESU license deployment](https://github.com/EverAzureRest/ESUScripts)
+
+[Prepare to deliver ESU](https://learn.microsoft.com/en-us/azure/azure-arc/servers/prepare-extended-security-updates?tabs=azure-cloud)
+
+[Programmatically manage ESU licenses via API](https://learn.microsoft.com/en-us/azure/azure-arc/servers/api-extended-security-updates)
