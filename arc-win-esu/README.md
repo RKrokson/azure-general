@@ -16,9 +16,9 @@ Windows Server 2012/R2 | October 10, 2023 | October 8, 2024 | October 14, 2025 |
 The following links provide additional detail. The summary is that Windows Server 2012/R2 reached end of support on October 10, 2023. In order to continue receiving security updates you must purchase ESU for each 2012 server. 
 
 You can get access to ESUs through the following options:
-* Azure virtual machines - Applicable virtual machines (VMs) hosted in Azure are automatically enabled for ESUs and these updates are provided free of charge, there's no need to deploy a MAK key or take any other action. See [Extended Security Updates on Azure](https://learn.microsoft.com/en-us/windows-server/get-started/extended-security-updates-deploy#extended-security-updates-on-azure) to learn more.
+* Azure virtual machines - Applicable virtual machines (VMs) hosted in Azure are automatically enabled for ESUs and these updates are provided free of charge, there's no need to deploy a MAK or take any other action. See [Extended Security Updates on Azure](https://learn.microsoft.com/en-us/windows-server/get-started/extended-security-updates-deploy#extended-security-updates-on-azure) to learn more.
 * **Azure Arc-enabled Servers** - If your servers are on-premises or in a hosted environment, you can enroll your Windows Server 2012 and 2012 R2 or SQL Server 2012 machines for Extended Security Updates via the Azure portal, connect through Azure Arc, and you'll be billed monthly via your Azure subscription.
-* Non-Azure servers without Azure Arc - If you can't connect using Azure Arc, use Extended Security Updates on non-Azure VMs, by using a Multiple Activation Key (MAK) and applying it to the relevant servers. This MAK key lets the Windows Update servers know that you can continue to receive security updates.
+* Non-Azure servers without Azure Arc - If you can't connect using Azure Arc, use Extended Security Updates on non-Azure VMs, by using a Multiple Activation Key (MAK) and applying it to the relevant servers. This MAK lets the Windows Update servers know that you can continue to receive security updates.
 
 **Important Note** - Software Assurance (SA) is required before you can enable ESU. During the ESU enablement process you will need to attest to having SA.
 
@@ -50,6 +50,9 @@ I mentioned license flexiblity in the previous section. Windows licensing AND th
     * **Important note** - vcore has an 8 core minimum per server. If your virtual server has less than 8 cores you still need to purchase a minimum of 8 cores to enable ESU for this server. No, you can't combine eight 1 core VMs into a single license.
 * License type - You will select Datacenter or Standard
   * OS license vs ESU license - The Arc ESU license does not need to match the original OS license. E.g., you can license a VM with ESU standard vcore licensing even if it was originally licensed with Datacenter via your host. 
+* Free Dev/Test or DR licenses (link below) - "There are some scenarios in which you may be eligible to receive Extended Security Updates patches at no additional cost. Two of these scenarios supported by Azure Arc include the following":
+    * Dev/Test (Visual Studio/MSDN licenses)
+    * Disaster Recovery (Entitled benefit DR instances from Software Assurance or subscription only)
 
 Arc ESU pricing is available at the link in the additional resources section below. You can see there is a large cost difference between Datacenter and Standard pricing. It's important to consider your hypervisor density, and 2012 decommissioning plans, when considering how to license ESU in your environment.  
 
@@ -85,6 +88,8 @@ Update the following columns to determine your required cores (server, host, or 
 [License provisioning guidelines for Extended Security Updates for Windows Server 2012](https://learn.microsoft.com/en-us/azure/azure-arc/servers/license-extended-security-updates)
 
 [Extended Security Updates enabled by Azure Arc Pricing](https://azure.microsoft.com/en-us/pricing/details/azure-arc/core-control-plane/)
+
+[Dev/Test scenarios](https://learn.microsoft.com/en-us/azure/azure-arc/servers/deliver-extended-security-updates#additional-scenarios)
 
 ## Deploy Azure Arc and configure Arc ESU licenses
 I'm not going to re-hash deployment as there are many options and it's dependent on your environment. It's well documented in the docs below.Here are the high-level next steps to deploy Azure Arc and configure Arc ESU:
