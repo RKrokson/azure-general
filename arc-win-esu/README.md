@@ -50,6 +50,8 @@ I mentioned license flexiblity in the previous section. Windows licensing AND th
     * **Important note** - vcore has an 8 core minimum per server. If your virtual server has less than 8 cores you still need to purchase a minimum of 8 cores to enable ESU for this server. No, you can't combine eight 1 core VMs into a single license.
 * License type - You will select Datacenter or Standard
   * OS license vs ESU license - The Arc ESU license does not need to match the original OS license. E.g., you can license a VM with ESU standard vcore licensing even if it was originally licensed with Datacenter via your host. 
+  * Datacenter - You'll select datacenter if you intend to license physical cores (pcores) for a hypervisor host. This will provide ESU for the VMs running on the host.
+  * Standard - Standard is selected for VMs (vcore) and physical servers (pcore). 
 * Free Dev/Test or DR licenses (link below) - "There are some scenarios in which you may be eligible to receive Extended Security Updates patches at no additional cost. Two of these scenarios supported by Azure Arc include the following":
     * Dev/Test (Visual Studio/MSDN licenses)
     * Disaster Recovery (Entitled benefit DR instances from Software Assurance or subscription only)
