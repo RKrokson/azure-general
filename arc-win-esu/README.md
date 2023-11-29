@@ -1,4 +1,4 @@
-# (Work in progress) Windows Server Extended Security Updates (ESU) with Azure Arc
+# Windows Server Extended Security Updates (ESU) with Azure Arc
 ## Summary/TL;DR
 You can now purchase Windows Server Extended Security Updates (ESU) through your Azure subscription with the Azure Arc hybrid agent. The pricing is monthly instead of the previous yearly purchase through Volume Licensing (VL). There is also flexiblity in how you license virtual and physical servers which can lead to substantial cost savings over the traditional VL purchase.
 
