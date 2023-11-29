@@ -1,5 +1,7 @@
 # Windows Server Extended Security Updates (ESU) with Azure Arc
 ## Summary/TL;DR
+How do I provide security updates to Windows Server 2012 without upgrading?
+
 You can now purchase Windows Server Extended Security Updates (ESU) through your Azure subscription with the Azure Arc hybrid agent. The pricing is monthly instead of the previous yearly purchase through Volume Licensing (VL). There is also flexiblity in how you license virtual and physical servers which can lead to substantial cost savings over the traditional VL purchase.
 
 You aren't migrating to Azure. You install the Azure Connected Machine agent on each server. This agent connects your server to the Azure control plane. This allows you to license ESU for the server. Azure Arc is free (unless you enable additional features) but you will pay for ESU licenses. Azure Arc ESU is enabling ESU but doesn't supply the updates. Your existing update process will remain unchanged.
