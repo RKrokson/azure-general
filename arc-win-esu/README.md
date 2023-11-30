@@ -2,7 +2,7 @@
 ## Summary/TL;DR
 How do I provide security updates to Windows Server 2012 without upgrading?
 
-You can now purchase Windows Server Extended Security Updates (ESU) through your Azure subscription with the Azure Arc hybrid agent. The pricing is monthly instead of the previous yearly purchase through Volume Licensing (VL). There is also flexiblity in how you license virtual and physical servers which can lead to substantial cost savings over the traditional VL purchase.
+You can now purchase Windows Server Extended Security Updates (ESU) through your Azure subscription with the Azure Arc hybrid agent. The pricing is monthly instead of the previous yearly purchase through Volume Licensing (VL). There is also flexibility in how you license virtual and physical servers which can lead to substantial cost savings over the traditional VL purchase.
 
 You aren't migrating to Azure. You install the Azure Connected Machine agent on each server. This agent connects your server to the Azure control plane. This allows you to license ESU for the server. Azure Arc is free (unless you enable additional features) but you will pay for ESU licenses. Azure Arc ESU is enabling ESU but doesn't supply the updates. Your existing update process will remain unchanged.
 
@@ -35,7 +35,7 @@ ESU enabled by Azure Arc was announced in July of 2023. This allows customers to
 
 1. Pay as you Go (PAYG) billing - You previously paid for ESU 1 year at a time. If you decommissioned or upgraded the server after 3 months you were stuck with the fixed cost of 12 months. Arc ESU enables monthly billing. Now when you decommission or upgrade a server after 3 months you can stop billing to reduce your ESU costs.
     * This depends on how you license with ESU. More on that in the next section. 
-2. License flexibility - With traditional VL ESU there is a requirement to match ESU licensing to Windows OS licensing. This is not a requirement for Arc ESU. This allows you to purchase ESU for a subset of your virtual machines instead of licensing the entire hypervisor host. This could lead to substanial cost savings when paired with PAYG pricing and a strategy for removing 2012 from the environment. More on this in the next section.
+2. License flexibility - With traditional VL ESU there is a requirement to match ESU licensing to Windows OS licensing. This is not a requirement for Arc ESU. This allows you to purchase ESU for a subset of your virtual machines instead of licensing the entire hypervisor host. This could lead to substantial cost savings when paired with PAYG pricing and a strategy for removing 2012 from the environment. More on this in the next section.
 3. Azure Billing - The monthly Arc ESU costs are billed against your Azure subscription. This allows you to monitor your ESU spend and work with your application teams to optimize their cloud spend (showback/chargeback). It also counts towards your Microsoft Azure Consumption Commitment (MACC).
 
 ### Additional resources:
@@ -43,7 +43,7 @@ ESU enabled by Azure Arc was announced in July of 2023. This allows customers to
 
 ## Licensing guidelines and pricing
 
-I mentioned license flexiblity in the previous section. Windows licensing AND the difference with Arc ESU can make this confusing. There are a few things to keep in mind.
+I mentioned license flexibility in the previous section. Windows licensing AND the difference with Arc ESU can make this confusing. There are a few things to keep in mind.
 
 * Core Type - You will select physical core or virtual core:
   * Physical core (pcore) - Use pcore for physical servers and hypervisor hosts. 
@@ -58,13 +58,18 @@ I mentioned license flexiblity in the previous section. Windows licensing AND th
     * Dev/Test (Visual Studio/MSDN licenses)
     * Disaster Recovery (Entitled benefit DR instances from Software Assurance or subscription only)
 
+With the knowledge above, you can then step through this decision tree. This will help you determine how to appropriately license your 2012 servers and identify a core count estimate. You'll need this estimate to accurately estimate Arc ESU pricing. The 'Identify core counts' section below will include an example spreadsheet to scale this estimate for larger environments.
+* One note about this decision tree. Keep your license flexibility in mind when you consider the first decision (physical or VM). You could protect VMs as vCore or protect the entire hypervisor host as physical. 
+![License Decision tree](./media/licenseTree.png)
+
+
 Arc ESU pricing is available at the link in the additional resources section below. You can see there is a large cost difference between Datacenter and Standard pricing. It's important to consider your hypervisor density, and 2012 decommissioning plans, when considering how to license ESU in your environment.  
 
 ![ESU pricing](./media/ESU-Pricing.png)
 
 Example - Licensing hypervisor host vs individual servers
 * Context - You have a hypervisor host with 48 physical cores. You have 4 2012 servers running on this host that are below the 8 core minimum per server. You have a decommission plan in place to remove the 2012 servers over the next 6 months.
-* License hypervisor host (RED) - In this scenario you are licening the host with Datacenter ESU licensing (separate from Windows OS licensing) to cover all VMs running on the host. You must fully license the phsyical cores until all 2012 VMs are removed. Then you can remove the ESU license at the end of February.
+* License hypervisor host (RED) - In this scenario you are licensing the host with Datacenter ESU licensing (separate from Windows OS licensing) to cover all VMs running on the host. You must fully license the physical cores until all 2012 VMs are removed. Then you can remove the ESU license at the end of February.
     * This still requires installing the Azure Arc agent on all VMs. You don't install Arc on the hypervisor host (unless it's Hyper-V and you're protecting it as well.)
 * License per server (GREEN) - In this scenario you are licensing per server with Standard ESU licensing (separate from Windows OS licensing) to cover each VM individually. You can remove each ESU license (or reduce core count if using a single large license) as you decommission a 2012 server. You immediately save on ESU costs.
 * October cost comparison
@@ -78,9 +83,9 @@ Example - Licensing hypervisor host vs individual servers
 ![Arc ESU Example](./media/ArcESU.png)
 
 ### Identify core counts
-Now you need to identify your required cores. You'll need this to accurately price out ESU costs for your environment. I'm including a simple example spreadsheet in the example folder. It includes formulas in the last two columns to set the core minimum counts for virtual and phsyical cores. 
+Now you need to identify your required cores. You'll need this to accurately price out ESU costs for your environment. I'm including a simple example spreadsheet in the example folder. It includes formulas in the last two columns to set the core minimum counts for virtual and physical cores. 
 
-Update the following columns to determine your required cores (server, host, or combiation):
+Update the following columns to determine your required cores (server, host, or combination):
 * Per server core counts - Server name, OS, Virtual (true/false), total cores 
 
 ![Server Core Counts](./media/corecounts1.png)
