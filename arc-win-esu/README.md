@@ -94,6 +94,8 @@ Update the following columns to determine your required cores (server, host, or 
 
 
 ### Additional resources:
+[Azure Arc ESU billing information](https://learn.microsoft.com/en-us/azure/azure-arc/servers/billing-extended-security-updates)
+
 [Dev/Test scenarios](https://learn.microsoft.com/en-us/azure/azure-arc/servers/deliver-extended-security-updates#additional-scenarios)
 
 [Extended Security Updates enabled by Azure Arc Pricing](https://azure.microsoft.com/en-us/pricing/details/azure-arc/core-control-plane/)
