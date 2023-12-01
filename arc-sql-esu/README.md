@@ -1,4 +1,4 @@
-# (Work in progress) SQL Server Extended Security Updates (ESU) with Azure Arc
+# SQL Server Extended Security Updates (ESU) with Azure Arc
 ## Summary/TL;DR
 How do I provide security updates to SQL Server 2012 and 2014 without upgrading?
 
