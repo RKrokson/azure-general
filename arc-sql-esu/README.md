@@ -4,7 +4,7 @@ How do I provide security updates to SQL Server 2012 and 2014 without upgrading?
 
 You can now purchase SQL Server Extended Security Updates (ESU) through your Azure subscription with the Azure Arc hybrid agent. The pricing is monthly instead of the previous yearly purchase through Volume Licensing (VL). This can lead to substantial cost savings over the traditional VL purchase.
 
-You aren't migrating to Azure. You install the Azure Connected Machine agent on each server. This agent connects your server to the Azure control plane. The agent detects SQL and installs the SQL extension. This allows you to license ESU for the server. Azure Arc is free (unless you enable additional features) but you will pay for ESU licenses. Azure Arc ESU is enabling ESU but doesn't auto apply the updates.
+You aren't migrating to Azure. You install the Azure Connected Machine agent on each server. This agent connects your server to the Azure control plane. The agent detects SQL and installs the SQL extension. This allows you to license ESU for the server. Azure Arc is free (unless you enable additional features) but you will pay for ESU licenses. Azure Arc ESU is enabling ESU but doesn't auto apply the updates. Your current update process/tooling does not change.
 
 This is my summary of the conversation after having this same conversation with many customers. I'll share the relevant Azure Docs along the way.
 
@@ -62,22 +62,19 @@ Guidelines not specific to SQL version:
 * Match license type - Arc SQL ESU license type must match the license type/edition of the on-prem SQL instance. Enterprise or Standard.
 * Back-billing - For customers who enroll in ESUs enabled by Azure Arc after the end of support dates, they will be billed a one-time upfront charge for the months they missed after the end of support date, with billing coming in at the end of the month.
     * This also includes any gaps in coverage. E.g., Enabling for month 1, disabling for month 2 and 3, before re-enabling in month 4. You will be back-billed for months 2 and 3. 
-* VL Invoice Registration - If you've already purchase ESU VL, the ESU inovice for your VL purchase will need to be registered in the Azure portal. Then you can link this invoice to your Arc-enabled SQL server or disconnected (but registered) SQL server.
-    * Ignore this if you don't require ESU VL for your scenario.
-![Link Inovice](./media/linkInvoice.png)
 
 Guidelines specific to SQL 2012:
 * Year 1 ESU with VL - Before you can use Extended Security Updates enabled by Azure Arc for SQL Server 2012, you must first acquire the Year 1 Extended Security Updates SKU through Commercial Licensing. See link in Additional Resources section for more details.
 * What do I need to do if I didn't purchase Year 1 ESU through VL? What are the cost implications?:
-    * You will need to purchase Year 1 VL and ensure you have software assurance (or other qualification.) Then you can enable Arc SQL ESU. Since we're in the middle of Year 2, you will be back-billed to July 2023 to pay the coverage gap in Year 2.
-
+    * You will need to purchase Year 1 VL and ensure you have software assurance (or other qualifications listed above.) Then you can enable Arc SQL ESU. Since we're in the middle of Year 2, you will be back-billed to July 2023 to pay the coverage gap in Year 2.
 
 Guidelines specific to Disconnected SQL servers: 
+* VL Invoice Registration - If you've already purchased ESU VL, the ESU invoice for your VL purchase will need to be registered in the Azure portal. Then you can link this invoice to your disconnected (but registered) SQL server.
+![Link Invoice](./media/linkInvoice.png)
 * Register disconnected servers in Azure portal - Yes, disconnected servers are supported. You register them in the Azure portal, one at a time or in bulk, so they can receive ESU updates. 
 ![Registered Servers](./media/registeredServers.png)
 * Manually download updates - Disconnected servers won't have access to automatically download updates from Windows Update. You will open the disconnected SQL server resource in Azure, select Extended Security Updates, and manually download the update to install offline.
 ![Disconnected Update](./media/disconnectedUpdate.png)
-
 
 Arc SQL ESU pricing is available at the link in the additional resources section below. Here is a screenshot from the pricing page that shows the cost of a 2 core pack.
 
@@ -96,7 +93,7 @@ Update the following columns to determine your required cores (Standard or Enter
 
 [Extended Security Updates enabled by Azure Arc Pricing](https://azure.microsoft.com/en-us/pricing/details/azure-arc/core-control-plane/)
 
-[Licensing ESU through commerial licensing](https://learn.microsoft.com/en-US/lifecycle/faq/extended-security-updates#licensing-with-extended-security-updates-licenses--skus--through-commercial-licensing)
+[Licensing ESU through commercial licensing](https://learn.microsoft.com/en-US/lifecycle/faq/extended-security-updates#licensing-with-extended-security-updates-licenses--skus--through-commercial-licensing)
 
 [SQL ESU FAQ](https://learn.microsoft.com/en-us/sql/sql-server/end-of-support/extended-security-updates-frequently-asked-questions?view=sql-server-ver15)
 
@@ -114,13 +111,13 @@ I'm not going to re-hash the Azure Arc deployment as there are many options and 
   * Set ESU to subscribe
     ![Enable ESU 2](./media/enableEsu2.png)
 
-Ofcource this is the simplest example that might be applicable for SQL 2014. A more complex example would be SQL 2012 (mid ESU cycle) with existing VL and disconnected servers. This scenario would have a few more steps:
+This is the simplest example that might be applicable for SQL 2014. A more complex example would be SQL 2012 (mid ESU cycle) with existing VL and disconnected servers. This scenario would have a few more steps:
 
 1. Purchase VL for Year 1 (and SA) if you don't already have it.
 2. Register VL invoice in Azure portal. 
 3. Deploy Arc Connected Machine agent to all SQL 2012 servers (except disconnected servers).
 4. Register disconnected servers in Azure portal.
-5. Link relevant VL Invoices to connected and disconnected (registered) servers.
+5. Link relevant VL Invoices to disconnected (registered) servers.
 6. Enable Arc SQL ESU for connected servers.
 
 ### Additional Resources
