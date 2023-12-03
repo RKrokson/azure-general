@@ -125,7 +125,7 @@ How do I structure my vcore ESU licenses? Great question. There are two schools 
 
 [ESU server pre-reqs](https://support.microsoft.com/en-us/topic/kb5031043-procedure-to-continue-receiving-security-updates-after-extended-support-has-ended-on-october-10-2023-c1a20132-e34c-402d-96ca-1e785ed51d45)
 
-[PowerShell scripts for ESU license deployment](https://github.com/EverAzureRest/ESUScripts)
+[PowerShell scripts for ESU license deployment](https://github.com/mkprizzle/esu-at-scale)
 
 [Prepare to deliver ESU](https://learn.microsoft.com/en-us/azure/azure-arc/servers/prepare-extended-security-updates?tabs=azure-cloud)
 
