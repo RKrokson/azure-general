@@ -62,6 +62,7 @@ Guidelines not specific to SQL version:
 * Match license type - Arc SQL ESU license type must match the license type/edition of the on-prem SQL instance. Enterprise or Standard.
 * Back-billing - For customers who enroll in ESUs enabled by Azure Arc after the end of support dates, they will be billed a one-time upfront charge for the months they missed after the end of support date, with billing coming in at the end of the month.
     * This also includes any gaps in coverage. E.g., Enabling for month 1, disabling for month 2 and 3, before re-enabling in month 4. You will be back-billed for months 2 and 3. 
+* Development environments - "With ESU enabled by Azure arc, you can cover development and test instances licensed with Microsoft Developer edition licenses or Visual Studio subscriptions for no additional cost." This is applicable after you purchase Arc SQL ESU for your production systems. Link to info in additional resources below.
 
 Guidelines specific to SQL 2012:
 * Year 1 ESU with VL - Before you can use Extended Security Updates enabled by Azure Arc for SQL Server 2012, you must first acquire the Year 1 Extended Security Updates SKU through Commercial Licensing. See link in Additional Resources section for more details.
@@ -94,6 +95,8 @@ Update the following columns to determine your required cores (Standard or Enter
 [Extended Security Updates enabled by Azure Arc Pricing](https://azure.microsoft.com/en-us/pricing/details/azure-arc/core-control-plane/)
 
 [Licensing ESU through commercial licensing](https://learn.microsoft.com/en-US/lifecycle/faq/extended-security-updates#licensing-with-extended-security-updates-licenses--skus--through-commercial-licensing)
+
+[SQL Development Environments](https://learn.microsoft.com/en-US/lifecycle/faq/extended-security-updates#development-environments)
 
 [SQL ESU FAQ](https://learn.microsoft.com/en-us/sql/sql-server/end-of-support/extended-security-updates-frequently-asked-questions?view=sql-server-ver15)
 
